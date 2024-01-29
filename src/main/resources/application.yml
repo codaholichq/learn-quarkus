@@ -1,0 +1,30 @@
+quarkus:
+  datasource:
+    db-kind: postgresql
+    username: postgres
+    password: postgres
+    jdbc:
+      url: jdbc:postgresql://127.0.0.1:5432/postgres
+  hibernate-orm:
+    sql-load-script: import.sql
+    database:
+      generation:
+        create-schemas: true
+  health:
+    extensions:
+      enabled: true
+  jackson:
+    fail-on-unknown-properties: true
+  http:
+    port: 3030
+  log: # ALL > FINEST > FINER > FINE > CONFIG > INFO > WARNING > SEVERE > OFF
+    console:
+      async: true
+      enable: true
+      format: "%d{yyyy-MM-dd HH:mm:ss,SSS} |- %-5p in %c:%L{3.} [%t] - %s%e%n"
+    level: INFO
+  smallrye-openapi:
+    path: /open-api
+  swagger-ui:
+    always-include: true
+    path: /swagger-ui
